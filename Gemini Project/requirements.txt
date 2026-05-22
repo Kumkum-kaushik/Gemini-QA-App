@@ -4,7 +4,9 @@ beautifulsoup4
 faiss-cpu
 langchain
 langchain-community
-google-generativeai
+langchain-core
+sentence-transformers
+google-genai
 python-dotenv
 
 

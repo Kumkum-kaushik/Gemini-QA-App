@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from typing import List
 from dotenv import load_dotenv
 import os
-import google.generativeai as genai
+from google import genai
 
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -20,12 +20,14 @@ GEMINI_KEY = os.getenv("GEMINI_API_KEY")
 if not GEMINI_KEY:
     raise ValueError("❌ GEMINI_API_KEY not found. Please add it in your .env file.")
 
-genai.configure(api_key=GEMINI_KEY)
+client = genai.Client(api_key=GEMINI_KEY)
 
 
 def query_gemini(prompt: str) -> str:
-    model = genai.GenerativeModel("gemini-2.0-flash")
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(
+        model="gemini-2.0-flash-lite",
+        contents=prompt
+    )
     return response.text
 
 
