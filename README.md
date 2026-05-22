@@ -1,4 +1,4 @@
-Gemini-QA-App
+#Gemini-QA-App
 ```markdown
 QA Application using GenAI, Hugging Face, FAISS, and Gemini
 
